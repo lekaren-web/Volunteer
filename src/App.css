@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.431);
 }
 .wave-container {
   background: white;
@@ -21,8 +20,8 @@
 }
 
 .App-header {
-  /* background-color: #282c34; */
-  height: 80.5vh;
+  background-color: #282c34;
+  height: 63.5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,17 +30,17 @@
   padding: 20;
 }
 .Event-card:hover {
-  width: 270px;
-  height: 400;
+  height: 250px;
   background-color: white;
   margin: 5;
+  width: 200px;
   padding: 10;
-  border-radius: 5;
-  cursor: pointer;
+  border-radius: 10;
 }
 .App-link {
   color: #61dafb;
 }
+<<<<<<< HEAD
 .slideshow-container {
   width: 70%;
   height: 400px;
@@ -171,6 +170,8 @@
   right: 0;
   border-radius: 3px 0 0 3px;
 }
+=======
+>>>>>>> parent of 001b6c9 (update: events loaded)
 
 @keyframes App-logo-spin {
   from {

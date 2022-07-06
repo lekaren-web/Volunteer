@@ -7,14 +7,21 @@ import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
 import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
 import { DataStore } from "@aws-amplify/datastore";
+<<<<<<< HEAD
 import { Events, Users } from "./models";
 import { FaBars, FaChevronLeft } from "react-icons/fa";
 import Profile from "./Profile";
 import Home from "./Home";
+=======
+import { Events } from "./models";
+import { FaBars } from "react-icons/fa";
+
+>>>>>>> parent of 001b6c9 (update: events loaded)
 Amplify.configure(awsconfig);
 
 function App() {
   const [events, setEvents] = useState([]);
+<<<<<<< HEAD
   const [user, setuser] = useState(null);
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("1970-01-01Z");
@@ -86,22 +93,28 @@ function App() {
     document.getElementById("profile").style.width = "50px";
     document.getElementById("profile").style.height = "50px";
     document.getElementById("profile").style.borderRadius = "25px";
-  }
+=======
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [newSize, setNewSize] = useState(0)
 
-  function navToggle() {
-    if (NavOpen) {
-      closeNav();
-      NavOpen = false;
-    } else {
-      openNav();
-      NavOpen = true;
-    }
+  function openMenu() {
+      setMenuOpen({ menuOpen: !menuOpen });
+      setNewSize({newSize: 210})
+>>>>>>> parent of 001b6c9 (update: events loaded)
   }
+  function closeMenu() {
+    setMenuOpen({ menuOpen: !menuOpen });
+      setNewSize({newSize: 0})
+  }
+<<<<<<< HEAD
   async function fetchData() {
     const events = await DataStore.query(Events);
     setEvents(events);
     console.log("Events retrieved successfully!", events);
   }
+=======
+  
+>>>>>>> parent of 001b6c9 (update: events loaded)
   // Fetch on events on load
   useEffect(() => {
     async function fetchData() {
@@ -110,6 +123,7 @@ function App() {
       console.log("Events retrieved successfully!", events);
     }
     fetchData();
+<<<<<<< HEAD
 
     async function fetchUser() {
       const user = await DataStore.query(Users);
@@ -118,6 +132,8 @@ function App() {
     }
     fetchData();
     getData();
+=======
+>>>>>>> parent of 001b6c9 (update: events loaded)
   }, []);
 
   // useEffect(() => {
@@ -140,6 +156,7 @@ function App() {
   // console.log("Events retrieved successfully!", JSON.stringify(events, null, 2));
 
   return (
+<<<<<<< HEAD
     <Router>
       <div className="App" style={{ zIndex: 0, marginLeft: { newSize } }}>
         <nav
@@ -179,6 +196,81 @@ function App() {
               border: 0,
               padding: 5,
               marginTop: 10,
+=======
+    <div className="App" style={{ zIndex: 0, marginLeft:{newSize} }}>
+      <nav>
+        {menuOpen ? (
+          <nav
+            style={{
+              height: "100vh",
+              width: "200px",
+              position: "absolute",
+              zIndex: 2,
+              backgroundColor: "wheat",
+            }}
+          >
+            <button
+              style={{
+                //   backgroundColor: "white",
+                padding: 5,
+                marginTop: 10,
+                width: "100%",
+              }}
+            >
+              <span
+                style={{ padding: "5px", width: "100%" }}
+                onClick={closeMenu}
+              >
+                <FaBars />
+              </span>
+            </button>
+          </nav>
+        ) : (
+          <nav
+            style={{
+              height: "100vh",
+              width: "50px",
+              position: "absolute",
+              zIndex: 2,
+              backgroundColor: "wheat",
+            }}
+          >
+            <button
+              style={{
+                width: "100%",
+                backgroundColor: "transparent",
+                border: 0,
+                padding: 5,
+                marginTop: 10,
+              }}
+            >
+              <span style={{ padding: "5px" }} onClick={openMenu}>
+                <FaBars />
+              </span>
+            </button>
+          </nav>
+        )}
+      </nav>
+      <div style={{ height: "300px", overflow: "hidden" }}>hi</div>
+      <div
+        style={{ display: "flex", flexDirection: "column" }}
+        className="App-header"
+      >
+        {/* <button onClick={fetchData}>Add Event</button> */}
+        <div>hi</div>
+        {events.length ? (
+          <div
+            style={{
+              width: "80%",
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              justifyContent: "space-between",
+              alignContent: "center",
+              alignItems: "center",
+              paddingTop: "40%",
+              padding: 10,
+>>>>>>> parent of 001b6c9 (update: events loaded)
             }}
             onClick={navToggle}
           >
@@ -192,6 +284,7 @@ function App() {
             id="openmenu"
             style={{ display: "none", textAlign: "center", color: "white" }}
           >
+<<<<<<< HEAD
             {/* <FaChevronLeft  styled={{position: 'relative', top: 0, right: 100}}/> */}
             <Link to="/profile">Profile</Link>
 
@@ -204,6 +297,32 @@ function App() {
         <Route path="/profile" element={<Profile/>} />
         <Route path="/" element={<Home/>} />
       </Routes>
+=======
+            {events.map((event) => (
+              <div
+                className="Event-card"
+                style={{
+                  height: "210px",
+                  backgroundColor: "white",
+                  margin: 30,
+                  width: "200px",
+                  padding: 10,
+                  borderRadius: 10,
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+                key={event.id}
+              >
+                <div style={{ color: "black" }}>image goes here</div>
+                <p style={{ color: "black" }}>{event.title}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <h3>No Events to load</h3>
+        )}
+        <AmplifySignOut />
+>>>>>>> parent of 001b6c9 (update: events loaded)
       </div>
     </Router>
     

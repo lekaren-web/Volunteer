@@ -14,7 +14,7 @@
 ## Installing Flask
 #### Now that you have your environment up and running, you can go ahead and install Flask
 
--> pip install flask
+-> pip install Flask
 
 #### The next thing is to register the script in an environment file.
 

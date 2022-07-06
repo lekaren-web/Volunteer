@@ -17,7 +17,6 @@ export declare class Events {
   readonly title: string;
   readonly date: string;
   readonly description: string;
-  readonly image?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Events, EventsMetaData>);
