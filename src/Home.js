@@ -17,7 +17,7 @@ function Home() {
   const [date, setDate] = useState("1970-01-01Z");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(
-    ""
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvKBGWjUuMNS4aQ-GDleR-K2k2Lh8xl6dzFw&usqp=CAU"
   );
   let NavOpen = false;
   const [newSize, setNewSize] = useState(0);
@@ -68,7 +68,7 @@ function Home() {
     setTimeout(showSlides, 7000); // Change image every 7 seconds
   }
 
-  function fetchData() {
+  function fetchEventData() {
     axios({
       method: "GET",
       url: "/events",
@@ -86,10 +86,17 @@ function Home() {
         }
       });
   }
+
   // Fetch on events on load
   useEffect(() => {
+    async function fetchData() {
+      const events = await DataStore.query(Events);
+      setEvents(events);
+      console.log(events)
+    }
+
     fetchData();
-    getData();
+    // getData();
   }, []);
 
   // useEffect(() => {
@@ -258,7 +265,7 @@ function Home() {
               <button
                 onClick={() => {
                   addData();
-                  fetchData();
+                  // fetchData();
                   setFormOpen(false);
                   document.querySelector("#form").style.display = "none";
                   document.querySelector("#Home").style.display = "block";
@@ -321,7 +328,7 @@ function Home() {
           filters
         </div> */}
 
-        {eventData && (
+        {events && (
           <div
             style={{
               width: "90%",
@@ -336,7 +343,7 @@ function Home() {
               marginLeft: 70,
             }}
           >
-            {eventData.map((event) => (
+            {events.map((event) => (
               <div
                 className="Event-card"
                 style={{
@@ -353,7 +360,7 @@ function Home() {
                 key={event.id}
               >
                 <img
-                  src={event.image}
+                  src={image}
                   style={{ width: "100%", borderRadius: "10, 10, 0, 0" }}
                 />
                 <div
