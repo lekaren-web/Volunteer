@@ -92,7 +92,7 @@ function Home() {
     async function fetchData() {
       const events = await DataStore.query(Events);
       setEvents(events);
-      console.log(events)
+      console.log(events);
     }
 
     fetchData();
@@ -122,18 +122,7 @@ function Home() {
     <div className="Home" style={{ zIndex: 0, marginLeft: { newSize } }}>
       {/* Slideshow container  */}
       <div className="wave-container" id="carousel">
-        <h1
-          id="header"
-          style={{
-            position: "absolute",
-            marginTop: 200,
-            marginLeft: 140,
-            fontSize: 50,
-            color: "#172a3a",
-          }}
-        >
-          Upcoming Events
-        </h1>
+        <h1 id="header">Upcoming Events</h1>
         {/* Full-width images with number and caption text */}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
@@ -151,15 +140,7 @@ function Home() {
             </div>
         } */}
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-evenly",
-          marginLeft: 150,
-        }}
-        id="upcoming"
-      >
+      <div id="upcoming">
         <h1
           style={{
             textAlign: "left",
@@ -318,11 +299,7 @@ function Home() {
           </div>
         </h1>
       </div>
-      <div
-        id="Home"
-        style={{ display: "flex", flexDirection: "column", padding: 30 }}
-        className="Home-header"
-      >
+      <div id="Home" className="Home-header">
         {/* <button onClick={fetchData}>Add Event</button> */}
         {/* <div id="filters">
           filters
@@ -330,39 +307,23 @@ function Home() {
 
         {events && (
           <div
-            style={{
-              width: "90%",
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
-              alignContent: "center",
-              alignItems: "center",
-              paddingTop: "40%",
-              padding: 10,
-              marginLeft: 70,
-            }}
+            id="events"
+            
           >
             {events.map((event) => (
               <div
                 className="Event-card"
-                style={{
-                  height: "270px",
-                  backgroundColor: "white",
-                  margin: 20,
-                  width: "250px",
-                  borderRadius: 10,
-                  display: "flex",
-                  flexDirection: "column",
-                  boxShadow: "1px 1px 2px 1px rgba(0, 0, 255, .1)",
-                  overflow: "clip",
-                }}
+                
                 key={event.id}
               >
+                <div id="event-card-left">
                 <img
+                className="Event-card-image"
                   src={image}
-                  style={{ width: "100%", borderRadius: "10, 10, 0, 0" }}
+                  
                 />
+                </div>
+                <div id="event-card-right">
                 <div
                   style={{
                     display: "flex",
@@ -392,6 +353,7 @@ function Home() {
                   >
                     {event.description}
                   </p>
+                </div>
                 </div>
               </div>
             ))}
