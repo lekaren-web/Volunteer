@@ -30,10 +30,10 @@
   padding: 20;
 }
 .Event-card:hover {
-  height: 250px;
+  height: 270px;
   background-color: white;
   margin: 5;
-  width: 200px;
+  width: 270px;
   padding: 10;
   border-radius: 10;
 }
